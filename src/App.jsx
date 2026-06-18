@@ -2,6 +2,9 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowRight, Phone, MessageCircle, Facebook, ChevronDown, Star, Shield, Users, TrendingUp, Check, Menu, X } from 'lucide-react'
+import { ReactLenis } from '@studio-freight/react-lenis'
+import CountUp from 'react-countup'
+import { motion } from 'framer-motion'
 import './index.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -86,9 +89,9 @@ function Navbar() {
         </div>
 
         {/* CTA */}
-        <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary text-xs px-4 py-2 shrink-0" style={{ padding: '0.55rem 1.25rem', fontSize: '0.8rem' }}>
+        <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary text-xs px-4 py-2 shrink-0" style={{ padding: '0.55rem 1.25rem', fontSize: '0.8rem' }}>
           Rejoindre
-        </a>
+        </motion.a>
 
         {/* Mobile toggle */}
         <button
@@ -127,9 +130,9 @@ function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary mt-4">
+          <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary mt-4">
             Rejoindre l'association
-          </a>
+          </motion.a>
         </div>
       )}
     </>
@@ -258,10 +261,10 @@ function Hero() {
 
         {/* CTAs */}
         <div ref={ctaRef} style={{ opacity: 0, display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center', marginBottom: '3rem' }}>
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
+          <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
             <MessageCircle size={16} />
             Rejoindre l'association
-          </a>
+          </motion.a>
           <a href="#features" className="btn-outline-light" style={{ padding: '0.875rem 1.75rem' }}>
             Découvrir nos missions
             <ChevronDown size={16} />
@@ -653,7 +656,7 @@ function EducationShowcase() {
   }, [])
 
   const stats = [
-    { value: '100%', label: 'Engagement éducatif' },
+    { value: <CountUp end={100} suffix="%" enableScrollSpy scrollSpyOnce />, label: 'Engagement éducatif' },
     { value: '2018', label: 'Année de fondation' },
     { value: '+50', label: 'Membres actifs' },
   ]
@@ -836,10 +839,10 @@ function EducationShowcase() {
 
           {/* CTA */}
           <div style={{ opacity: 0 }}>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
               <MessageCircle size={16} />
               Rejoindre le mouvement
-            </a>
+            </motion.a>
           </div>
         </div>
       </div>
@@ -994,10 +997,10 @@ function FemmeScolarisee() {
 
           {/* CTA */}
           <div style={{ opacity: 0 }}>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ display: 'inline-flex' }}>
+            <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-outline" style={{ display: 'inline-flex' }}>
               <MessageCircle size={16} />
               Nous soutenir
-            </a>
+            </motion.a>
           </div>
         </div>
 
@@ -1069,7 +1072,7 @@ function FemmeScolarisee() {
               gap: '0.2rem',
             }}>
               <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.5rem', color: '#6E5440', lineHeight: 1 }}>
-                50%
+                <CountUp end={50} suffix="%" enableScrollSpy scrollSpyOnce />
               </span>
               <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.62rem', color: 'rgba(13,13,18,0.5)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 De notre réseau sont des femmes
@@ -1176,7 +1179,7 @@ function JeunesseSociete() {
               textAlign: 'right'
             }}>
               <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: '1.5rem', color: '#6E5440', lineHeight: 1 }}>
-                100%
+                <CountUp end={100} suffix="%" enableScrollSpy scrollSpyOnce />
               </span>
               <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.62rem', color: 'rgba(13,13,18,0.5)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                 Engagés pour l'avenir
@@ -1855,8 +1858,11 @@ function Footer() {
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
 export default function App() {
+
+
   return (
-    <div style={{ minHeight: '100vh', background: '#0D0D12' }}>
+    <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
+      <div style={{ minHeight: '100vh', background: '#0D0D12' }}>
       <Navbar />
       <Hero />
       <Features />
@@ -1867,7 +1873,8 @@ export default function App() {
       <Protocol />
       <Pricing />
       <Footer />
-    </div>
+      </div>
+    </ReactLenis>
   )
 }
 
