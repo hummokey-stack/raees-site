@@ -202,7 +202,7 @@ function Hero() {
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 2, padding: '0 2rem 5rem', maxWidth: '860px' }}>
         {/* Eyebrow */}
-        <div ref={eyebrowRef} style={{ opacity: 0 }}>
+        <div ref={eyebrowRef} className="hidden md:block" style={{ opacity: 0 }}>
           <span className="font-mono-jet" style={{
             color: '#D9A84F',
             fontSize: '0.7rem',
