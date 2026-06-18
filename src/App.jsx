@@ -12,8 +12,8 @@ gsap.registerPlugin(ScrollTrigger)
 // ─── CONSTANTS ──────────────────────────────────────────────────────────────
 const WA_LINK = 'https://wa.me/237653921642'
 
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80'
-const PHILOSOPHY_IMAGE = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=60'
+const HERO_IMAGE = 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=60&fm=webp&auto=format'
+const PHILOSOPHY_IMAGE = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&q=60&fm=webp&auto=format'
 
 const TYPEWRITER_MESSAGES = [
   'Ousmanou Ibrahim — Président National',
@@ -116,7 +116,7 @@ function Navbar() {
             <X size={24} />
           </button>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <img src="/logo.png" alt="R.A.E.E.S. Logo" style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(217,168,79,0.4)' }} />
+            <img src="/logo.png" alt="R.A.E.E.S. Logo" fetchPriority="high" style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(217,168,79,0.4)' }} />
             <span className="font-inter font-bold text-2xl" style={{ color: '#D9A84F' }}>R.A.E.E.S.</span>
           </div>
           {links.map(l => (
